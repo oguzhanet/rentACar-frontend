@@ -23,7 +23,7 @@ export class CarComponent implements OnInit {
   getCars(){
    this.carService.getCars().subscribe(response=>{
      this.cars=response.data
-     this.dataLoaded=true
+     this.dataLoaded=true;
    })
   }
 
