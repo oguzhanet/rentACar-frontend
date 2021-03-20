@@ -8,6 +8,7 @@ import { BrandService } from 'src/app/services/brand.service';
   styleUrls: ['./brand.component.css']
 })
 export class BrandComponent implements OnInit {
+  filterBrandText:string;
   brands:Brand[]=[];
   currentBrand:Brand;
   dataLoaded=false;
@@ -35,6 +36,15 @@ export class BrandComponent implements OnInit {
     }else{
       return "list-group-item"
     }
+  }
+
+  getAllClass(){
+    if(!this.currentBrand){
+      return "list-group-item active"
+    }else{
+      return "list-group-item"
+    }
+    
   }
 
 }

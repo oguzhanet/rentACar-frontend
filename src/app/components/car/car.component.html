@@ -28,23 +28,34 @@
         <span class="visually-hidden">Loading...</span>
     </div>
 </div>
+
+<div class="mb-3">
+    <input type="text" [(ngModel)]="filterCarText" class="form-control" id="filterCarText" 
+    placeholder="Model adı giriniz">
+  </div>
+  <div *ngIf="filterCarText" class="alert alert-success">
+      {{filterCarText}} aradınız
+  </div>
+
 <table *ngIf="dataLoaded==true" class="table table-success table-striped">
     <thead>
+        <li [class]="getAllCarClass()" routerLink="/cars">Tüm Arabalar</li>
         <tr>
             <th>Araba Numarası</th>
             <th>Marka</th>
             <th>Renk</th>
             <th>Model</th>
             <th>Günlük Kirası</th>
-            <th>Açıklama</th>
+            <th>Model</th>
         </tr>
     </thead>
-    <tr routerLink="cars/cardetail/{{car.carId}}" *ngFor="let car of cars">
+    
+    <tr routerLink="cars/cardetail/{{car.carId}}" *ngFor="let car of cars | carFilter:filterCarText">
         <td>{{car.carId}}</td>
         <td>{{car.brandName}}</td>
         <td>{{car.colorName}}</td>
         <td>{{car.modelYear}}</td>
-        <td>{{car.dailyPrice}}</td>
+        <td>{{car.dailyPrice | currency:"Günlük/TL"}}</td>
         <td>{{car.description}}</td>
     </tr>
 </table>

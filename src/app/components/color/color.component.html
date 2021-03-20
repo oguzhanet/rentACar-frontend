@@ -2,9 +2,17 @@
     <span class="visually-hidden">Loading...</span>
 </div>
 <ul class="list-group">
+    <br>
+    <div class="mb-3">
+        <input type="text" [(ngModel)]="filterColorText" class="form-control" id="filterColorText" 
+        placeholder="Renk adı giriniz">
+      </div>
+      <div *ngIf="filterColorText" class="alert alert-success">
+          {{filterColorText}} aradınız
+      </div>
     <li (click)="setCurrentColor(color)"
     routerLink="/cars/color/{{color.colorId}}"
-    *ngFor="let color of colors" 
+    *ngFor="let color of colors | colorFilter:filterColorText" 
     [class]="getCurrentBrandClass(color)">{{color.colorName}}</li>
   </ul>
 <!-- <table *ngIf="dataLoaded==true" class="table">

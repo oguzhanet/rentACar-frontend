@@ -8,6 +8,7 @@ import { ColorService } from 'src/app/services/color.service';
   styleUrls: ['./color.component.css']
 })
 export class ColorComponent implements OnInit {
+  filterColorText:string;
   colors:Color[]=[];
   dataLoaded=false;
   currentColor:Color;

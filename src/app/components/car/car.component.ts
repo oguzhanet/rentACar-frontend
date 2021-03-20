@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
 
@@ -11,11 +12,14 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarComponent implements OnInit {
 
+  filterCarText:string;
   cars:Car[] = [];
   dataLoaded=false;
+  currentCar:Car;
   
   constructor(private carService:CarService,
-    private activatedRoute:ActivatedRoute) { }
+    private activatedRoute:ActivatedRoute,
+    private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
@@ -49,6 +53,15 @@ export class CarComponent implements OnInit {
       this.cars=response.data
       this.dataLoaded=true;
     })
+  }
+
+  getAllCarClass(){
+    if(!this.currentCar){
+      return "list-group-item active"
+    }else{
+      return "list-group-item"
+    }
+    
   }
 
 }

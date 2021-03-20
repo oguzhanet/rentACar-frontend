@@ -2,9 +2,18 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 <ul class="list-group">
+  <li [class]="getAllClass()" routerLink="">Ana Sayfa</li>
+  <br>
+  <div class="mb-3">
+    <input type="text" [(ngModel)]="filterBrandText" class="form-control" id="filterBrandText" 
+    placeholder="Marka adı giriniz">
+  </div>
+  <div *ngIf="filterBrandText" class="alert alert-success">
+      {{filterBrandText}} aradınız
+  </div>
     <li (click)="setCurrentBrand(brand)"
     routerLink="/cars/brand/{{brand.brandId}}"
-   *ngFor="let brand of brands" 
+   *ngFor="let brand of brands | brandFilter:filterBrandText"  
     [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>
   </ul>
 
