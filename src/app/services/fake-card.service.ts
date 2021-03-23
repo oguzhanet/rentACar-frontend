@@ -1,0 +1,31 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { FakeCard } from '../models/fakeCard';
+import { LİstResponceModel } from '../models/listResponseModel';
+import { ResponseModel } from '../models/responseModel';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class FakeCardService {
+
+  constructor(private httpClient:HttpClient) { }
+
+  apiUrl='https://localhost:44357/api/';
+
+  isCardExist(fakeCard:FakeCard):Observable<ResponseModel>{
+    let newPath=this.apiUrl+"fakecards/iscardexist";
+    return this.httpClient.post<ResponseModel>(newPath,fakeCard)
+  }
+
+  getCardByNumber(cardNumber:string):Observable<LİstResponceModel<FakeCard>>{
+    let newPath = this.apiUrl + "fakecards/getbycardnumber?cardnumber=" + cardNumber
+    return this.httpClient.get<LİstResponceModel<FakeCard>>(newPath);
+  }
+
+  updateCard(fakeCard:FakeCard){
+    let newPath = this.apiUrl + "fakecards/update"
+    this.httpClient.put(newPath,fakeCard)
+  }
+}

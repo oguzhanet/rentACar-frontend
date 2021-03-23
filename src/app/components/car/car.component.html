@@ -47,9 +47,11 @@
             <th>Model</th>
             <th>Günlük Kirası</th>
             <th>Model</th>
+            <th></th>
         </tr>
     </thead>
-    
+    <tbody>
+        
     <tr routerLink="cars/cardetail/{{car.carId}}" *ngFor="let car of cars | carFilter:filterCarText">
         <td>{{car.carId}}</td>
         <td>{{car.brandName}}</td>
@@ -57,5 +59,7 @@
         <td>{{car.modelYear}}</td>
         <td>{{car.dailyPrice | currency:"Günlük/TL"}}</td>
         <td>{{car.description}}</td>
+        <td><button type="button" class="btn btn-success">Kirala</button></td>
     </tr>
+</tbody>
 </table>
