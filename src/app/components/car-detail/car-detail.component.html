@@ -48,7 +48,7 @@
             <td>{{car.brandName}}</td>
             <td>{{car.colorName}}</td>
             <td>{{car.modelYear}}</td>
-            <td>{{car.dailyPrice}}</td>
+            <td>{{car.dailyPrice | currency:"Günlük/TL"}}</td>
             <td>{{car.description}}</td>
             <td><button routerLink="/creditcards" type="button" class="btn btn-success">Kirala</button></td>
         </tr>
