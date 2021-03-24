@@ -41,6 +41,9 @@
                 <th>Açıklama</th>
                 <th></th>
             </tr>
+            <tr>
+              <th></th>
+            </tr>
         </thead>
         <tbody>
         <tr *ngFor="let car of cars">
@@ -51,6 +54,9 @@
             <td>{{car.dailyPrice | currency:"Günlük/TL"}}</td>
             <td>{{car.description}}</td>
             <td><button routerLink="/creditcards" type="button" class="btn btn-success">Kirala</button></td>
+        </tr>
+        <tr>
+          <td><button routerLink="/cars/add" type="button" class="btn btn-success">Araç ekle</button></td>
         </tr>
       </tbody>
     </table>
