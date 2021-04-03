@@ -9,7 +9,9 @@ import { CarComponent } from './components/car/car.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { CreditCardComponent } from './components/credit-card/credit-card.component';
 import { CustomerComponent } from './components/customer/customer.component';
+import { LoginComponent } from './components/login/login.component';
 import { RentalComponent } from './components/rental/rental.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {path:"", pathMatch:"full", component:CarComponent},
@@ -23,11 +25,12 @@ const routes: Routes = [
   {path:"rentals", component:RentalComponent},
   {path:"creditcards", component:CreditCardComponent},
   {path:"customers", component:CustomerComponent},
-  {path:"cars/add", component:CarAddComponent},
+  {path:"cars/add", component:CarAddComponent, canActivate:[LoginGuard]},
   {path:"cars/update", component:CarUpdateComponent},
   {path:"cars/delete", component:CarDeleteComponent},
   {path:"brands/add", component:BrandAddComponent},
-  {path:"colors/add", component:ColorAddComponent}
+  {path:"colors/add", component:ColorAddComponent},
+  {path:"login", component:LoginComponent}
 ];
 
 @NgModule({
