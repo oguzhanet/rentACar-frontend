@@ -18,7 +18,16 @@ export class ColorService {
     return this.httpClient.get<LİstResponceModel<Color>>(newPath);
   }
 
+  getByColorId(colorId:number):Observable<LİstResponceModel<Color>>{
+    let newPath=this.apiUrl+"colors/getbycolorid?colorId="+colorId
+    return this.httpClient.get<LİstResponceModel<Color>>(newPath)
+  }
+
   add(color:Color):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(this.apiUrl+"colors/add",color)
+   }
+
+   update(color:Color):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"colors/update",color)
    }
 }

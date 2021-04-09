@@ -34,7 +34,7 @@ export class CarDeleteComponent implements OnInit {
     if(this.carDeleteForm.valid){
       let carModel=Object.assign({},this.carDeleteForm.value)
       this.carService.delete(carModel).subscribe(response=>{
-        this.toastrService.success(response.message,"Silindi")
+        this.toastrService.success()
       },responseError=>{
         if(responseError.error.Errors.length>0){
           for (let i = 0; i < responseError.error.Errors.length; i++) {

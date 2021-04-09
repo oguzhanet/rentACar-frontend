@@ -10,9 +10,9 @@ import { ResponseModel } from '../models/responseModel';
 })
 export class FakeCardService {
 
-  constructor(private httpClient:HttpClient) { }
-
   apiUrl='https://localhost:44357/api/';
+
+  constructor(private httpClient:HttpClient) { }
 
   isCardExist(fakeCard:FakeCard):Observable<ResponseModel>{
     let newPath=this.apiUrl+"fakecards/iscardexist";
@@ -22,6 +22,10 @@ export class FakeCardService {
   getCardByNumber(cardNumber:string):Observable<LİstResponceModel<FakeCard>>{
     let newPath = this.apiUrl + "fakecards/getbycardnumber?cardnumber=" + cardNumber
     return this.httpClient.get<LİstResponceModel<FakeCard>>(newPath);
+  }
+
+  add(fakeCard:FakeCard):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"fakecards/add",fakeCard)
   }
 
   updateCard(fakeCard:FakeCard){

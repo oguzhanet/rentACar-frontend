@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { DialogExampleComponent } from './dialog-example/dialog-example/dialog-example.component';
 
 @NgModule({
   declarations: [
@@ -46,8 +48,10 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     CarDeleteComponent,
     BrandAddComponent,
     ColorAddComponent,
-    LoginComponent
+    LoginComponent,
+    DialogExampleComponent
   ],
+  entryComponents : [DialogExampleComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -55,13 +59,15 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    MatDialogModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
     })
   ],
-  providers: [{
-    provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true
-  }],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
