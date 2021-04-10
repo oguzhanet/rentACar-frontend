@@ -21,6 +21,7 @@ import { ColorFilterPipe } from './pipes/color-filter.pipe';
 
 import {ToastrModule} from 'ngx-toastr';
 import { CarAddComponent } from './components/car-add/car-add.component';
+import { CreditCardComponent } from './components/credit-card/credit-card.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { CarDeleteComponent } from './components/car-delete/car-delete.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
@@ -40,6 +41,7 @@ import { DialogExampleComponent } from './dialog-example/dialog-example/dialog-e
     CustomerComponent,
     RentalComponent,
     CarDetailComponent,
+    CreditCardComponent,
     CarFilterPipe,
     BrandFilterPipe,
     ColorFilterPipe,
@@ -57,9 +59,9 @@ import { DialogExampleComponent } from './dialog-example/dialog-example/dialog-e
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatDialogModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
     })

@@ -1,1 +1,68 @@
-
+<div class="row g-0 bg-light position-relative" *ngFor="let car of cars">
+    <div class="col-md-6 mb-md-0 p-md-4" *ngFor="let image of images">
+      <img  *ngIf="car.carId==image.carId"  
+          [src]="imageUrl+image.imagePath"
+          class=""
+          style="height: 100%; width: 100%; object-fit: contain"
+          [alt]="imageUrl+image.imagePath"
+        />
+    </div>
+    <div class="col-md-6 p-4 ps-md-0">
+      <h5 class="card-title">{{car.description}}</h5>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><mark>Id</mark> : {{car.carId}}</li>
+       <li class="list-group-item"><mark>Marka</mark> : {{car.brandName}}</li>
+       <li class="list-group-item"><mark>Renk</mark> : {{car.colorName}}</li>
+       <li class="list-group-item"><mark>Model</mark> : {{car.modelYear}}</li>
+       <li class="list-group-item"><mark>Günlük Kira </mark>: {{car.dailyPrice}}</li>
+      </ul>
+      
+      <div class="card-body" >
+      
+        <div class="form-group row">
+          <label for="example-datetime-local-input" class="col-3 col-form-label">
+            <mark>Kiralama Tarihi</mark></label
+          >
+          <div class="col-6">
+            <input [(ngModel)] ="rentDate"
+              name="rentDate"
+              class="form-control"
+              type="datetime-local"
+              id="rent-start-date-input"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="example-datetime-local-input" class="col-3 col-form-label">
+            <mark>Dönüş Tarihi</mark></label
+          >
+          <div class="col-6">
+            <input [(ngModel)] ="rentEndDate"
+              name="rentEndDate"
+              class="form-control"
+              type="datetime-local"
+              id="rent-end-date-input"
+              required
+            />
+          </div>
+          <div class="card-body" *ngIf=isRentable()>
+            <a
+              routerLink="/cars/rental"
+              class="card-link btn btn-primary"
+              (click)="rentCar(car.carId)"
+              >Kirala</a
+            >
+          </div>
+          <div class="card-body" *ngIf=!isRentable()>
+            <a
+              class="card-link btn btn-primary"
+              >Araç Kiralamaya Puanınız yeterli Değil</a
+            >
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
