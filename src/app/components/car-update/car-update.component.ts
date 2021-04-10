@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,FormControl,Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -11,6 +13,7 @@ import { CarService } from 'src/app/services/car.service';
 export class CarUpdateComponent implements OnInit {
 
   carUpdateForm:FormGroup;
+ 
   constructor(private formBuilder:FormBuilder,
     private carService:CarService,
     private toastrService:ToastrService) { }
@@ -27,6 +30,7 @@ export class CarUpdateComponent implements OnInit {
       modelYear:["",Validators.required],
       dailyPrice:["",Validators.required],
       description:["",Validators.required],
+      findeks:["",Validators.required],
     })
   }
 

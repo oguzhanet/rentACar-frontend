@@ -46,12 +46,13 @@
               required
             />
           </div>
+
           <div class="card-body" *ngIf=isRentable()>
-            <a
+            <button
               routerLink="/cars/rental"
               class="card-link btn btn-primary"
               (click)="rentCar(car.carId)"
-              >Kirala</a
+              >Kirala</button>
             >
           </div>
           <div class="card-body" *ngIf=!isRentable()>
