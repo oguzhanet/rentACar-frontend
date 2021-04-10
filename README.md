@@ -2,11 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
 
--Angular 11
--Bootstrap 5.0
--HttpClient Interceptor
--Temel Guard
--Özel Pipeler
+- Angular 11
+- Bootstrap 5.0
+- HttpClient Interceptor
+- Temel Guard
+- Özel Pipeler
 
 ## Development server
 
